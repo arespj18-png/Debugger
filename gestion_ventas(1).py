@@ -15,7 +15,10 @@ def fn_CalcularDescuento_fl(precio_total_fl, tipo_cliente_str):
     """
 
     if tipo_cliente_str == "VIP":
-        precio_final_fl = precio_total_fl * 0.80
+        precio_final_fl = (
+            precio_total_fl * 0.80
+        )  # correccion: multiplicado por 0.80 para aplicar el 20% de descuento (antes cobraba solo el 20%)
+
     elif tipo_cliente_str == "HABITUAL":
         precio_final_fl = precio_total_fl * 0.90
     else:
@@ -33,7 +36,7 @@ def fn_ProcesarListaVentas_fl(ventas_lst):
 
     while i < len(ventas_lst):
         total_fl += ventas_lst[i]
-        i += 1
+        i += 1  # correccion: sumamos 1 a la i para que el bucle avance y no se quede en bucle infinito
     return total_fl
 
 
@@ -43,7 +46,7 @@ def fn_EvaluarObjetivoDiario_bool(total_ventas_fl, objetivo_int=500):
     """
 
     if total_ventas_fl < objetivo_int:
-        alcanzado_bool = False
+        alcanzado_bool = False  # correccion: si el total es menor al objetivo no se ha alcanzado, asi que tiene que ser false
     else:
         alcanzado_bool = True
 
